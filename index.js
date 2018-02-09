@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-class App extends React.Component {
-  render() {
-    return (
-        <div>
-          <h1>Hello React & Reduct Project</h1>
-        </div>
-    )
-  }
-}
+import App from "./app.js";
+import {BrowserRouter} from "react-router-dom"; 
+
 ReactDOM.render(
-    <App/>,
+	<BrowserRouter>
+    	<App/>
+    </BrowserRouter>,
     document.getElementById('app')
 )

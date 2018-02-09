@@ -1,19 +1,37 @@
-console.log("Inside app.js: Line 1");
-import React from "react"; 
-import ReactDom from "react-dom"; 
-import {Provider} from "react-redux";
-import BrowserRouter from "react-router"; 
-// import Main from relevant file ******************** 
-console.log("Inside app.js: Line 7");
+import React from "react";
+import {Route} from "react-router";
+import InitialImages from "./initialimages.js";
+import Login from "./login.js"; 
+import Profile from "./profile.js"; 
+import ShoppingCart from "./shoppingcart.js";
+import {Link} from "react-router-dom";
 
-ReactDom.render(
-	<Provider store={store}>
-		{console.log("Inside app.js: Line 11")}
-		<BrowserRouter>
-			{/* <div> */}
-				<Route path ="/" component = {Main} /> 
-			{/* </div> */}
-		</BrowserRouter>
-	</Provider>, 
-	document.getElementById("app");
-);
+let link = {
+	borderRadius: "5px",
+	border: "2px solid black",
+	margin: "0px 10px 0px 10px"
+}
+
+
+class App extends React.Component {
+  render() {
+    return (
+        <div>
+
+          <div id="navbar"> 
+          	<Link to="/" style={link}> Main </Link> 
+          	<Link to="/login" style={link}> Log In </Link>
+          	<Link to="/profile" style={link}> Profile </Link>
+          	<Link to="/shoppingcart" style={link}> Shopping Cart </Link> 
+          </div>
+          <Route exact path = "/" component = {InitialImages} />
+          <Route path = "/login" component = {Login} />
+          <Route path = "/profile" component = {Profile} />
+          <Route path = "/shoppingcart" component = {ShoppingCart} />
+
+        </div>
+    )
+  }
+}
+
+export default App; 
