@@ -5,10 +5,11 @@ import Login from "./login.js";
 import Profile from "./profile.js"; 
 import ShoppingCart from "./shoppingcart.js";
 import {Link} from "react-router-dom";
-
+import AppBar from "material-ui/AppBar";
+import FlatButton from "material-ui/FlatButton";
+import MenuItem from "material-ui/MenuItem";
+console.log("FlatButttttttton", FlatButton);
 let link = {
-	borderRadius: "5px",
-	border: "2px solid black",
 	margin: "0px 10px 0px 10px"
 }
 
@@ -17,13 +18,12 @@ class App extends React.Component {
   render() {
     return (
         <div>
-
-          <div id="navbar"> 
-          	<Link to="/" style={link}> Main </Link> 
-          	<Link to="/login" style={link}> Log In </Link>
-          	<Link to="/profile" style={link}> Profile </Link>
-          	<Link to="/shoppingcart" style={link}> Shopping Cart </Link> 
-          </div>
+        <AppBar>
+          	<Link to="/" style={link}> <MenuItem primaryText="Main"></MenuItem> </Link> 	
+          	<Link to="/login" style={link}> <MenuItem primaryText="Log In"></MenuItem> </Link>
+          	<Link to="/profile" style={link}> <MenuItem primaryText="Profile"></MenuItem> </Link>
+          	<Link to="/shoppingcart" style={link}> <MenuItem primaryText="Cart"></MenuItem> </Link>       
+        </AppBar>   
           <Route exact path = "/" component = {InitialImages} />
           <Route path = "/login" component = {Login} />
           <Route path = "/profile" component = {Profile} />

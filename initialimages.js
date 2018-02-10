@@ -1,12 +1,16 @@
 import React from "react";
+import CardContainer from "./cardcontainer.js";
+
 class InitialImages extends React.Component {
+
   render() {
     return (
         <div>
-          <h1>Initial Images</h1>
+          <CardContainer />
         </div>
     )
   }
+
 }
 
 export default InitialImages; 
