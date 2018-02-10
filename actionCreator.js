@@ -7,5 +7,8 @@ function incrementQuantity(id){
 	console.log("Inside actionCreator.js line 7");
 	return {type: actionTypes.INCREMENT_QUANTITY, payload:id}
 }
+function checkout(){
+	return {type: actionTypes.CHECKOUT}
+}
 
-export default {logIn, incrementQuantity}; 
+export default {logIn, incrementQuantity, checkout}; 

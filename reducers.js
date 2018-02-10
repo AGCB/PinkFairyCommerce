@@ -53,23 +53,29 @@ let initialState = {
 
 
 const reducers = (state=initialState, action) => {
+	
 	switch(action.type){
-		case actionTypes.LOG_IN: 
+		case actionTypes.LOG_IN:{
 			let newState = Object.assign({}, state, {loggedInStatus: action.payload});
 			return newState; 
-			break;
-		case actionTypes.INCREMENT_QUANTITY:
-			console.log("Inside reducer.js line 62");
+			}	
+			break; 
+		case actionTypes.INCREMENT_QUANTITY:{
 			let newProductsArr = state.products.slice(); 
-			console.log("Inside reducer.js line 64:", newProductsArr);
-			console.log("Inside reducer.js:", action.payload);
 			newProductsArr[action.payload].quantity++; 
-			console.log("Inside reducer.js line 67:", newProductsArr);
-			let newState1 = Object.assign({}, state, {products:newProductsArr});
-			console.log("Inside reducer.js line 69:", newState1);
-			return newState1;
+			let newState = Object.assign({}, state, {products:newProductsArr});
+			return newState;
+			}
 			break;
-		default: 
+		case actionTypes.CHECKOUT:{
+			console.log("Inside reducer Checkout");
+			let newState = Object.assign({}, state, {products: initialState.products});
+			console.log("Inside reducer checkout::::", newState.products);
+			return newState;  
+		}
+		break; 
+
+		default:
 			return state; 
 	}
 }

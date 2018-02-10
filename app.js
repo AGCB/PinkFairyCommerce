@@ -22,7 +22,7 @@ class App extends React.Component {
           	<Link to="/" style={link}> <MenuItem primaryText="Main"></MenuItem> </Link> 	
           	<Link to="/login" style={link}> <MenuItem primaryText="Log In"></MenuItem> </Link>
           	<Link to="/profile" style={link}> <MenuItem primaryText="Profile"></MenuItem> </Link>
-          	<Link to="/shoppingcart" style={link}> <MenuItem primaryText="Cart"></MenuItem> </Link>       
+          	<Link to="/shoppingcart" style={link}> <MenuItem primaryText="Checkout"></MenuItem> </Link>       
         </AppBar>   
           <Route exact path = "/" component = {InitialImages} />
           <Route path = "/login" component = {Login} />
