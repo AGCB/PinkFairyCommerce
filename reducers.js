@@ -1,8 +1,9 @@
 import actionTypes from "./actionTypes.js";
 
-let initialState = {
-	loggedInStatus: "HI",
-	products:[
+function getInitialState(){
+	return {
+		loggedInStatus: "HI",
+		products:[
 		{
 			price: 39.99,
 			quantity: 0, 
@@ -48,9 +49,11 @@ let initialState = {
 			quantity: 0,
 			src: "https://19wzwz1i4unl15n0ux1rqxbb-wpengine.netdna-ssl.com/wp-content/uploads/2017/05/p-344-baratza-virtuoso-thumb-300x300.jpg"
 		}
-	]
+		]
+	}
 }
 
+const initialState = getInitialState();
 
 const reducers = (state=initialState, action) => {
 	console.log("!!!!!!!Init State", initialState.products);
@@ -61,20 +64,21 @@ const reducers = (state=initialState, action) => {
 			}	
 			break; 
 		case actionTypes.INCREMENT_QUANTITY:{
-			console.log("Action Types Initial State: ", initialState.products);
+			//console.log("Action Types Initial State: ", initialState.products);
 			let newProductsArr = state.products.slice(); 
 			newProductsArr[action.payload].quantity++; 
 			let newState = Object.assign({}, state, {products:newProductsArr});
+			console.log()
 			return newState;
 			}
 			break;
 		case actionTypes.CHECKOUT:{
-			console.log("Initial State", initialState.products);
-			console.log("Inside reducer Checkout: ", state.products);
-			let newState = Object.assign({}, state, {products: initialState.products});
-			console.log("Inside reducer checkout::::", newState.products);
-			return newState;  
-		}
+			let newState = JSON.parse(JSON.stringify(state)); 
+			newState.products.forEach(function(item){
+				item.quantity=0;
+			});
+			return newState; 
+			}
 		break; 
 
 		default:
