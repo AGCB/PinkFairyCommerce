@@ -48,18 +48,27 @@ let initialState = {
 			quantity: 0,
 			src: "https://19wzwz1i4unl15n0ux1rqxbb-wpengine.netdna-ssl.com/wp-content/uploads/2017/05/p-344-baratza-virtuoso-thumb-300x300.jpg"
 		}
-	],
-	checkout: {
-
-	}
+	]
 }
 
 
 const reducers = (state=initialState, action) => {
 	switch(action.type){
-		case actionTypes.LOG_IN:  
+		case actionTypes.LOG_IN: 
 			let newState = Object.assign({}, state, {loggedInStatus: action.payload});
 			return newState; 
+			break;
+		case actionTypes.INCREMENT_QUANTITY:
+			console.log("Inside reducer.js line 62");
+			let newProductsArr = state.products.slice(); 
+			console.log("Inside reducer.js line 64:", newProductsArr);
+			console.log("Inside reducer.js:", action.payload);
+			newProductsArr[action.payload].quantity++; 
+			console.log("Inside reducer.js line 67:", newProductsArr);
+			let newState1 = Object.assign({}, state, {products:newProductsArr});
+			console.log("Inside reducer.js line 69:", newState1);
+			return newState1;
+			break;
 		default: 
 			return state; 
 	}

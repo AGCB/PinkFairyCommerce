@@ -1,13 +1,14 @@
 import React, {Component} from "react";
 import Card from "./card.js";
 import {connect} from "react-redux";
+import actionCreator from "./actionCreator.js";
 
 const mapStateToProps = store => ({
 	cardContainer: store.products
 });
 
 const mapDispatchInProps = dispatch => ({
-
+	incrementQuantity: (id)=>{ console.log("Inside cardcontainer line 11"); dispatch(actionCreator.incrementQuantity(id)); }
 });
 
 class CardContainer extends Component{
@@ -17,8 +18,8 @@ class CardContainer extends Component{
 	}
 
 onClick(id){
-	
-	console.log(id);
+	console.log("Inside carcontainer.js line 21");
+	this.props.incrementQuantity(id);
 }
 
 render(){
